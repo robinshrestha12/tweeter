@@ -1,0 +1,15 @@
+header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-image: url("../images/headerbackgroundblizzard-1920x1080.png")
+}
+.alignImage {
+  align-items: center;
+  flex-direction: column;
+}
+
