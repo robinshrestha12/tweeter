@@ -5,8 +5,9 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  background-image: url("../images/headerbackgroundblizzard-1920x1080.png")
+  background-image: url("../images/headerbackgroundblizzard-1920x1080.png");
+  position: relative;
+  top: 120px;
 }
 .alignImage {
   align-items: center;
