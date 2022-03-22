@@ -9,7 +9,9 @@ nav {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  position: fixed;
+  position: fixed; /* Set the navbar to fixed position */
+  top:0; /* Position the navbar at the top of the page */
+  width:100%; /* Keep full width */
   z-index: 1;
  
   }
@@ -20,8 +22,7 @@ nav {
   display: flex;
   flex-direction: column;
   text-align: center;
-  
-}
+  }
 .fa-angles-down {
   position: relative;
   color: red;
