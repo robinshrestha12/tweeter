@@ -4,10 +4,10 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-//const { response } = require("express");
+
 
 // Fake data taken from initial-tweets.json
-const data = [
+/*const data = [
   {
     "user": {
       "name": "Newton",
@@ -31,19 +31,19 @@ const data = [
     "created_at": 1461113959088
   }
 ];
+*/
 // function to get number of days ago tweeted
-const getDayDifference = function(previoustime) {
-  const currentDate = new Date();
-  const differencetime = currentDate.getTime() - previoustime;
-  console.log(differencetime);
-  const dayDifference = differencetime / (24 * 60 * 60 * 1000);
-  return Math.round(dayDifference);
-};
+// const getDayDifference = function(previoustime) {
+//   const currentDate = new Date();
+//   const differencetime = currentDate.getTime() - previoustime;
+//   //console.log(differencetime);
+//   const dayDifference = differencetime / (24 * 60 * 60 * 1000);
+//   return Math.round(dayDifference);
+// };
 const renderTweets = function(tweets) {
 // loops through tweets
 // calls createTweetElement for each tweet
 // takes return value and appends it to the tweets container
-console.log(tweets);
   for (const tweet of tweets) {
     let $tweetData = createTweetElement(tweet);
     $("#tweets-container").append($tweetData);
@@ -66,29 +66,48 @@ const createTweetElement = function(tweetData) {
   </header>                 
     <div class="tweetTextOld">${textinput}</div> 
     <footer>            
-      <output name="days" class="days" for="tweet-text">${getDayDifference(time)} days ago</output>
+      <output name="days" class="days" for="tweet-text">${timeago.format(time)}</output>
       <div class="icons">
       <i class="fa-solid fa-flag"></i>
       <i class="fa-solid fa-retweet"></i>
       <i class="fa-solid fa-heart"></i>
     </div>  
     </footer>
-   </article>`;
-  console.log($tweet);
+   </article>`; 
   return $tweet;
 };
+
+//AJAX to fetch (GET) data from server
+const loadTweets = function(){
+  $.ajax({
+    url: '/tweets',
+    method: 'GET',
+    dataType: 'json',
+    success: (tweets) => {   
+      renderTweets(tweets);
+    },
+    error: (err) => {
+      console.log(`error: ${err}`)
+    } 
+  });
+ }
+
 $(document).ready(function() {
-  renderTweets(data);
+
+  loadTweets();
+
   const $form =$('#tweet-form');
+
   $form.on('submit', function(event){
-  event.preventDefault();
-  console.log('The form was submitted!');
-  const serializedData=$(this).serialize();
-  $.post('/tweets', serializedData, response => {
-    console.log(response);    
-  })
+    event.preventDefault();
+    console.log('The form was submitted!');
+    const serializedData=$(this).serialize();
+    $.post('/tweets', serializedData, response => {
+      console.log(response);    
+    })
+  });
 });
-});
+
 
 
 
