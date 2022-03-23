@@ -3,7 +3,11 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
+const escapeText = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 const renderTweets = function(tweets) {
 // loops through tweets
 // calls createTweetElement for each tweet
@@ -29,7 +33,7 @@ const createTweetElement = function(tweetData) {
     </div>
     <div >${handle}</div>
   </header>                 
-    <div class="tweetTextOld">${textinput}</div> 
+    <div class="tweetTextOld">${escapeText(textinput)}</div> 
     <footer>            
       <output name="days" class="days" for="tweet-text">${timeago.format(time)}</output>
       <div class="icons">
