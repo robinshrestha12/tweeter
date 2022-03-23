@@ -3,6 +3,9 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
+//const { response } = require("express");
+
 // Fake data taken from initial-tweets.json
 const data = [
   {
@@ -40,6 +43,7 @@ const renderTweets = function(tweets) {
 // loops through tweets
 // calls createTweetElement for each tweet
 // takes return value and appends it to the tweets container
+console.log(tweets);
   for (const tweet of tweets) {
     let $tweetData = createTweetElement(tweet);
     $("#tweets-container").append($tweetData);
@@ -75,5 +79,17 @@ const createTweetElement = function(tweetData) {
 };
 $(document).ready(function() {
   renderTweets(data);
+  const $form =$('#tweet-form');
+  $form.on('submit', function(event){
+  event.preventDefault();
+  console.log('The form was submitted!');
+  const serializedData=$(this).serialize();
+  $.post('/tweets', serializedData, response => {
+    console.log(response);    
+  })
 });
+});
+
+
+
   
