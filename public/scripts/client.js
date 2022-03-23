@@ -73,38 +73,51 @@ const createTweetElement = function(tweetData) {
       <i class="fa-solid fa-heart"></i>
     </div>  
     </footer>
-   </article>`; 
+   </article>`;
   return $tweet;
 };
 
 //AJAX to fetch (GET) data from server
-const loadTweets = function(){
+const loadTweets = function() {
   $.ajax({
     url: '/tweets',
     method: 'GET',
     dataType: 'json',
-    success: (tweets) => {   
+    success: (tweets) => {
       renderTweets(tweets);
     },
     error: (err) => {
-      console.log(`error: ${err}`)
-    } 
+      console.log(`error: ${err}`);
+    }
   });
- }
+};
 
 $(document).ready(function() {
 
   loadTweets();
 
-  const $form =$('#tweet-form');
+  const $form = $('#tweet-form');
 
-  $form.on('submit', function(event){
+  $form.on('submit', function(event) {
     event.preventDefault();
     console.log('The form was submitted!');
-    const serializedData=$(this).serialize();
-    $.post('/tweets', serializedData, response => {
-      console.log(response);    
-    })
+    
+    //get text input from the form
+    $textinput = $(this).closest("form").find("textarea").val();
+    //get length of text input
+    $texinputlength = $textinput.trim().length;
+   
+    if ($textinput === "" || $textinput === null) {
+      alert("Please insert a tweet text.");
+    } else if ($texinputlength > 140) {
+      alert("Tweet content is too long");
+    } else {
+      //tweet will be posted after validation
+      const serializedData = $(this).serialize();
+      $.post('/tweets', serializedData, response => {
+        console.log(response);
+      });
+    }
   });
 });
 
