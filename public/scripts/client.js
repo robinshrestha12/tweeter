@@ -75,22 +75,27 @@ $(document).ready(function() {
     
     //get text input from the form
     $textinput = $(this).closest("form").find("textarea").val();
+    $message =$(".errormessage");
+    $messagebox =$(".errorbox");
+    $messagebox.slideUp();
     //get length of text input
     $texinputlength = $textinput.trim().length;
    
-    if ($textinput === "" || $textinput === null) {
-      alert("Please insert a tweet text.");
+    if ($textinput === "" || $textinput === null) {      
+      $message.text("Please insert a tweet text.");
+      $messagebox.slideDown();
     } else if ($texinputlength > 140) {
-      alert("Tweet content is too long");
+      $message.text("Tweet content is too long");
+      $messagebox.slideDown();
     } else {
       //tweet will be posted after validation
-    
-      const serializedData = $(this).serialize();
+       const serializedData = $(this).serialize();
       $.post('/tweets', serializedData, response => {
         console.log(response);
         loadTweets();
         $form[0].reset();      //clearing the form text input value
         $('.counter').val(140); //clearing the form counter value
+        
       });      
     }
   });
