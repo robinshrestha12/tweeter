@@ -3,7 +3,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-const escapeText = function (str) {
+const escapeText = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
@@ -53,7 +53,7 @@ const loadTweets = function() {
     method: 'GET',
     dataType: 'json',
     success: (tweets) => {
-      const $tweets=$('.tweets');
+      const $tweets = $('.tweets');
       $tweets.remove();
       renderTweets(tweets);
     },
@@ -75,28 +75,32 @@ $(document).ready(function() {
     
     //get text input from the form
     $textinput = $(this).closest("form").find("textarea").val();
-    $message =$(".errormessage");
-    $messagebox =$(".errorbox");
+    $message = $(".errormessage");
+    $messagebox = $(".errorbox");
     $messagebox.slideUp();
     //get length of text input
     $texinputlength = $textinput.trim().length;
    
-    if ($textinput === "" || $textinput === null) {      
+    if ($textinput === "" || $textinput === null) {
       $message.text("Please insert a tweet text.");
-      $messagebox.slideDown();
+      $messagebox.slideUp(500, function() {
+        $(this).css('display', 'flex'); // set display to flex as slide up default is block
+      });
     } else if ($texinputlength > 140) {
       $message.text("Tweet content is too long");
-      $messagebox.slideDown();
+      $messagebox.slideUp(500, function() {
+        $(this).css('display', 'flex');
+      });
     } else {
       //tweet will be posted after validation
-       const serializedData = $(this).serialize();
+      const serializedData = $(this).serialize();
       $.post('/tweets', serializedData, response => {
         console.log(response);
         loadTweets();
         $form[0].reset();      //clearing the form text input value
         $('.counter').val(140); //clearing the form counter value
         
-      });      
+      });
     }
   });
 });

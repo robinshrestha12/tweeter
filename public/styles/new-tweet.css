@@ -5,10 +5,10 @@
   flex-direction: column;
   padding-bottom: 40px;
 }
-.errorbox {
+.new-tweet .errorbox {
   display: flex;
-  justify-content: center;
   flex-direction: row;
+  justify-content: center;
   padding-top: 40px;  
   color: red;
   padding-top:20px;
@@ -20,6 +20,10 @@
   font-weight: bold;
   gap: 20px;
   display: none;
+}
+.errorbox .fas fa-exclamation-triangle {
+  font-size:30px;
+  color:red'
 }
 h2 {
   font-size: larger;
@@ -65,7 +69,7 @@ article.tweets{
   background-color: transparent;
   font-size:medium;
   font-family:Arial, Helvetica, sans-serif;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 article.tweets:hover {
   box-shadow: 10px 10px 5px lightblue;
