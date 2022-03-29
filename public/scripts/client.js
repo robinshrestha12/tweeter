@@ -1,7 +1,5 @@
 /*
  * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 const escapeText = function(str) {
   let div = document.createElement("div");
@@ -12,7 +10,7 @@ const renderTweets = function(tweets) {
   // loops through tweets
   // calls createTweetElement for each tweet
   // takes return value and appends it to the tweets container
-  //tweets.reverse();
+ 
   for (const tweet of tweets) {
     let $tweetData = createTweetElement(tweet);
     $("#tweets-container").prepend($tweetData);
