@@ -1,4 +1,4 @@
-/* Desktop styles */
+/* Navbar color change when smaller size of website */
 @media only screen and (max-width: 1024px) {
  nav {
   background-image: url(../images/headerbackgroundblizzard-1920x1080.png);
