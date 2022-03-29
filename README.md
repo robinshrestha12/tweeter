@@ -2,7 +2,7 @@
 This project was completed as a part of Week 8 requirement while I was a Web Development student in Lighthouse Labs.
 Tweeter is a single page app built with HTML, CSS, JS, JQuery, AJAX, Express.
 
-There was alreay the starter code for the project: Students did fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express back-end skills.
+There was already the starter code for the project: Students did fork and clone that repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express back-end skills.
 
 ## Getting Started
 
