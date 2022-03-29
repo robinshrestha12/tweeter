@@ -9,9 +9,9 @@ const escapeText = function(str) {
   return div.innerHTML;
 };
 const renderTweets = function(tweets) {
-// loops through tweets
-// calls createTweetElement for each tweet
-// takes return value and appends it to the tweets container
+  // loops through tweets
+  // calls createTweetElement for each tweet
+  // takes return value and appends it to the tweets container
   //tweets.reverse();
   for (const tweet of tweets) {
     let $tweetData = createTweetElement(tweet);
@@ -19,7 +19,7 @@ const renderTweets = function(tweets) {
   }
 };
 const createTweetElement = function(tweetData) {
-  /* Your code for creating the tweet element */
+  /* code for creating the tweet element */
   const avatar = tweetData.user.avatars;
   const name = tweetData.user.name;
   const handle = tweetData.user.handle;
@@ -72,7 +72,7 @@ $(document).ready(function() {
   $form.on('submit', function(event) {
     event.preventDefault();
     console.log('The form was submitted!');
-    
+
     //get text input from the form
     $textinput = $(this).closest("form").find("textarea").val();
     $message = $(".errormessage");
@@ -80,7 +80,7 @@ $(document).ready(function() {
     $messagebox.slideUp();
     //get length of text input
     $texinputlength = $textinput.trim().length;
-   
+
     if ($textinput === "" || $textinput === null) {
       $message.text("Please insert a tweet text.");
       $messagebox.slideUp(500, function() {
@@ -99,7 +99,7 @@ $(document).ready(function() {
         loadTweets();
         $form[0].reset();      //clearing the form text input value
         $('.counter').val(140); //clearing the form counter value
-        
+
       });
     }
   });
@@ -108,4 +108,3 @@ $(document).ready(function() {
 
 
 
-  

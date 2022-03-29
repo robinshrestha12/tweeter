@@ -1,3 +1,6 @@
+/*
+ * Header design
+ */
 #mainheader {
   height: 400px;
   width: 100%;
@@ -13,4 +16,3 @@
   align-items: center;
   flex-direction: column;
 }
-
