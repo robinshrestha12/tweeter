@@ -85,7 +85,7 @@ $(document).ready(function() {
         $(this).css('display', 'flex'); // set display to flex as slide up default is block
       });
     } else if ($texinputlength > 140) {
-      $message.text("Tweet content is too long");
+      $message.text("Tweet can't exceed 140 chars");
       $messagebox.slideUp(500, function() {
         $(this).css('display', 'flex');
       });
