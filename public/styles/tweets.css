@@ -42,6 +42,7 @@ article.tweets .tweetTextOld {
   border-right: none;
   border-bottom: 3px solid black;
   text-align: left;
+  overflow-wrap: break-word;
 }
 article.tweets header .tweetuser {
   display: flex;
